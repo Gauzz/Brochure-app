@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "49548223742",
+    "firebase_url": "https://lateralxdb.firebaseio.com",
+    "project_id": "lateralxdb",
+    "storage_bucket": "lateralxdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49548223742:android:dac894b78edd2942",
+        "android_client_info": {
+          "package_name": "com.example.lateralx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49548223742-kcehlhrfd5uviap5lbhu8l521lfgvjnf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lateralx",
+            "certificate_hash": "0474aa9ee118663a40c2fe951f79a11862f3bc11"
+          }
+        },
+        {
+          "client_id": "49548223742-1nf36or6rq32sl1oqbbvj17t8rdlbaig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfMv5aPiv3CQ49iCusm02vFCknljFJQQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49548223742-1nf36or6rq32sl1oqbbvj17t8rdlbaig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

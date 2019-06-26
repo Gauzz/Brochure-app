@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="173dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:srcCompat="@drawable/blue" />
+
+    <Button
+        android:id="@+id/markerless_btn"
+        android:layout_width="220dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="88dp"
+        android:background="#FFFFFF"
+        android:foregroundTint="#22313F"
+        android:gravity="center|center_vertical"
+        android:onClick="startMarkerless"
+        android:text="I don't have brochure"
+        android:textColor="#2B2B2B"
+        android:textDirection="firstStrong"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markerbased_btn" />
+
+    <Button
+        android:id="@+id/markerbased_btn"
+        android:layout_width="220dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="56dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:onClick="startMarkerbased"
+        android:text="I have brochure"
+        android:textColor="#22313F"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/vrtour_btn"
+        android:layout_width="220dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="88dp"
+        android:background="#FFFFFF"
+        android:gravity="center|center_vertical"
+        android:onClick="startTour"
+        android:text="VR TOUR"
+        android:textColor="#22313F"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/markerless_btn" />
+
+    <LinearLayout
+        android:layout_width="324dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/call_btn"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#00F9F9F9"
+            android:onClick="call"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/telephone" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="293dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Contact us" />
+
+    </LinearLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.25" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="321dp"
+        app:layout_constraintGuide_percent="0.75" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintGuide_begin="20dp" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintGuide_begin="20dp" />
+
+</android.support.constraint.ConstraintLayout>
