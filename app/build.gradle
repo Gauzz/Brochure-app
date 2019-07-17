@@ -47,3 +47,7 @@ sceneform.asset('sampledata/scene.gltf',
         'default',
         'sampledata/scene.sfa',
         'src/main/assets/scene')
+sceneform.asset('sampledata/models/chroma_key_video.obj',
+        'sampledata/models/chroma_key_video_material.mat',
+        'sampledata/models/chroma_key_video.sfa',
+        'src/main/res/raw/chroma_key_video')

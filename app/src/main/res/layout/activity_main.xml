@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://schemas.android.com/apk/res/android
 http://schemas.android.com/apk/res/android ">
 
@@ -17,18 +16,20 @@ http://schemas.android.com/apk/res/android ">
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
         app:srcCompat="@drawable/blue" />
 
     <Button
         android:id="@+id/markerless_btn"
         android:layout_width="220dp"
-        android:layout_height="59dp"
+        android:layout_height="47dp"
         android:layout_gravity="center"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="#FFFFFF"
         android:foregroundTint="#22313F"
         android:gravity="center|center_vertical"
@@ -36,45 +37,76 @@ http://schemas.android.com/apk/res/android ">
         android:text="I don't have brochure"
         android:textColor="#2B2B2B"
         android:textDirection="firstStrong"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/markerbased_btn" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="markerless_btn,markerbased_btn,vrtour_btn"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="399dp" />
 
     <Button
         android:id="@+id/markerbased_btn"
         android:layout_width="220dp"
         android:layout_height="46dp"
         android:layout_gravity="center"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginBottom="8dp"
         android:background="#FFFFFF"
         android:gravity="center"
         android:onClick="startMarkerbased"
         android:text="I have brochure"
         android:textColor="#22313F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintBottom_toTopOf="@+id/vrtour_btn"
+        app:layout_constraintEnd_toEndOf="@+id/vrtour_btn"
+        app:layout_constraintStart_toStartOf="@+id/vrtour_btn" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="vrtour_btn,markerless_btn"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="533dp" />
 
     <Button
         android:id="@+id/vrtour_btn"
         android:layout_width="220dp"
-        android:layout_height="46dp"
+        android:layout_height="47dp"
         android:layout_gravity="center"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginBottom="8dp"
         android:background="#FFFFFF"
         android:gravity="center|center_vertical"
         android:onClick="startTour"
         android:text="VR TOUR"
         android:textColor="#22313F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/markerless_btn" />
+        app:layout_constraintBottom_toTopOf="@+id/markerless_btn"
+        app:layout_constraintEnd_toEndOf="@+id/markerless_btn"
+        app:layout_constraintStart_toStartOf="@+id/markerless_btn" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="vrtour_btn"
+        tools:layout_editor_absoluteY="533dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="324dp"
         android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
@@ -103,8 +135,11 @@ http://schemas.android.com/apk/res/android ">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
@@ -135,15 +170,15 @@ http://schemas.android.com/apk/res/android ">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.25" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.75" />
 
 </android.support.constraint.ConstraintLayout>

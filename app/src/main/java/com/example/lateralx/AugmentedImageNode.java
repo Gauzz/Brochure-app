@@ -34,8 +34,6 @@ import com.google.ar.sceneform.rendering.Color;
 import com.google.ar.sceneform.rendering.ExternalTexture;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -46,10 +44,25 @@ import java.util.concurrent.CompletableFuture;
 public class AugmentedImageNode extends AnchorNode {
 
   private static final String TAG = "AugmentedImageNode";
+    @Nullable
+    private ModelRenderable videoRenderable;
+    private MediaPlayer mediaPlayer;
 
+    // The color to filter out of the video.
+    private static final Color CHROMA_KEY_COLOR = new Color(0.1843f, 1.0f, 0.098f);
+
+    // Controls the height of the video in world space.
+    private static final float VIDEO_HEIGHT_METERS = 0.85f;
+    @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
+    // CompletableFuture requires api level 24
+    // FutureReturnValueIgnored is not valid @Override
+    //  @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
+    //  // CompletableFuture requires api level 24
+    //  // FutureReturnValueIgnored is not valid
   // The augmented image represented by this node.
   private AugmentedImage image;
   private static CompletableFuture<ModelRenderable> ulCorner;
+    ExternalTexture texture = new ExternalTexture();
 
     public AugmentedImageNode(Context context) {
         if (ulCorner == null) {
@@ -60,6 +73,32 @@ public class AugmentedImageNode extends AnchorNode {
 
 
     }
+
+//        // Create an Android MediaPlayer to capture the video on the external texture's surface.
+//        mediaPlayer = MediaPlayer.create(context, R.raw.lion_chroma);
+//        mediaPlayer.setSurface(texture.getSurface());
+//        mediaPlayer.setLooping(true);
+//
+//        // Create a renderable with a material that has a parameter of type 'samplerExternal' so that
+//        // it can display an ExternalTexture. The material also has an implementation of a chroma key
+//        // filter.
+//        ModelRenderable.builder()
+//                .setSource(context, R.raw.chroma_key_video)
+//                .build()
+//                .thenAccept(
+//                        renderable -> {
+//                            videoRenderable = renderable;
+//                            renderable.getMaterial().setExternalTexture("videoTexture", texture);
+//                            renderable.getMaterial().setFloat4("keyColor", CHROMA_KEY_COLOR);
+//                        })
+//                .exceptionally(
+//                        throwable -> {
+//                            Toast toast =
+//                                    Toast.makeText(context, "Unable to load video renderable", Toast.LENGTH_LONG);
+//                            toast.setGravity(Gravity.CENTER, 0, 0);
+//                            toast.show();
+//                            return null;
+//                        });
 
   }
 
@@ -87,6 +126,35 @@ public class AugmentedImageNode extends AnchorNode {
 
     // Set the anchor based on the center of the image.
     setAnchor(image.createAnchor(image.getCenterPose()));
+
+//      Node videoNode = new Node();
+//      videoNode.setParent(this);
+//
+//      // Set the scale of the node so that the aspect ratio of the video is correct.
+//      float videoWidth = mediaPlayer.getVideoWidth();
+//      float videoHeight = mediaPlayer.getVideoHeight();
+//      videoNode.setLocalScale(
+//              new Vector3(
+//                      VIDEO_HEIGHT_METERS * (videoWidth / videoHeight), VIDEO_HEIGHT_METERS, 1.0f));
+//
+//      // Start playing the video when the first node is placed.
+//      if (!mediaPlayer.isPlaying()) {
+//          mediaPlayer.start();
+//
+//          // Wait to set the renderable until the first frame of the  video becomes available.
+//          // This prevents the renderable from briefly appearing as a black quad before the video
+//          // plays.
+//          texture
+//                  .getSurfaceTexture()
+//                  .setOnFrameAvailableListener(
+//                          (SurfaceTexture surfaceTexture) -> {
+//                              videoNode.setRenderable(videoRenderable);
+//                              texture.getSurfaceTexture().setOnFrameAvailableListener(null);
+//                          });
+//      } else {
+//          videoNode.setRenderable(videoRenderable);
+//      }
+
 
     Vector3 localPosition = new Vector3();
     Vector3 localScale = new Vector3();

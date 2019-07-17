@@ -17,30 +17,17 @@
 package com.example.lateralx;
 
 import android.content.Intent;
-import android.graphics.SurfaceTexture;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.Frame;
 import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.FrameTime;
-import com.google.ar.sceneform.Node;
-import com.google.ar.sceneform.math.Vector3;
-import com.google.ar.sceneform.rendering.Color;
-import com.google.ar.sceneform.rendering.ExternalTexture;
-import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.samples.common.helpers.SnackbarHelper;
 import com.google.ar.sceneform.ux.ArFragment;
 
-import java.net.URI;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +41,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
   private ArFragment arFragment;
   private ImageView fitToScanView;
   private final Map<AugmentedImage, AugmentedImageNode> augmentedImageMap = new HashMap<>();
+  private final Map<AugmentedImage, VideoNode> augmentedImageMaps = new HashMap<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -105,14 +93,18 @@ public class AugmentedImageActivity extends AppCompatActivity {
           // Create a new anchor for newly found images.
           if (!augmentedImageMap.containsKey(augmentedImage)) {
             AugmentedImageNode node = new AugmentedImageNode(this);
+            VideoNode vnode = new VideoNode(this);
             node.setImage(augmentedImage);
             augmentedImageMap.put(augmentedImage, node);
-              if(augmentedImage.getIndex() == 1)
+              if(augmentedImage.getIndex() == 1){
                   arFragment.getArSceneView().getScene().addChild(node);
-              if(augmentedImage.getIndex() == 0){
-                arFragment.getArSceneView().getScene().addChild(node);
 
               }
+            vnode.setImage(augmentedImage);
+            if(augmentedImage.getIndex() == 0){
+              arFragment.getArSceneView().getScene().addChild(vnode);
+
+            }
           }
           break;
 
